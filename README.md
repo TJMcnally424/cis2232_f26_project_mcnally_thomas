@@ -11,27 +11,27 @@ This application allows officials with the NHL to track the stats for the player
 Azure
 
 # Required fields
-playerFirstName	String
-playerLastName	String
-playerPosition	String
-playerGoals	Int
-playerAssists	Int
-playerPenaltyMin	Float
-playerMatches	Int
-playerWins	Int
-playerLosses	Int
-playerShots	Int
-playerSaves	Int
-playerPoints	Int
-playerPointsPerGame	Double
-playerScoringPercentage	Double
+playerFirstName	String  
+playerLastName	String  
+playerPosition	String  
+playerGoals	Int  
+playerAssists	Int  
+playerPenaltyMin	Float  
+playerMatches	Int  
+playerWins	Int  
+playerLosses	Int  
+playerShots	Int  
+playerSaves	Int  
+playerPoints	Int  
+playerPointsPerGame	Double  
+playerScoringPercentage	Double  
 
 # Calculation
-Total points:
-playerGoals + playerAssists = playerPoints
-
-Points per game
-playerPoints / playerMatches = playerPointsPerGame
-
-Scoring Percentage
-playerGoals / playerShots * 100 = playerScoringPercentage
+Total points:  
+playerGoals + playerAssists = playerPoints  
+  
+Points per game    
+playerPoints / playerMatches = playerPointsPerGame  
+  
+Scoring Percentage  
+playerGoals / playerShots * 100 = playerScoringPercentage  
