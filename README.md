@@ -4,7 +4,7 @@ Lead Developer: Thomas
 Quality Control: Jesse
 
 # Description 
-Stat tracking application for NHL players
+Stat tracking application for NHL players.  
 This application allows officials with the NHL to track the stats for the players in the league calculate their points, as well as various derived statistics.
 
 # Colour
