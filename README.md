@@ -37,5 +37,5 @@ Scoring Percentage
 playerGoals / playerShots * 100 = playerScoringPercentage  
 
 # Report Requirements
-## Report 
-Report details
+## Player Name Report 
+Enter a player name and the report will return any rows that have that name. On the results page show all data for the specified player,
