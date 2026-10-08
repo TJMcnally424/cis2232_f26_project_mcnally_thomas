@@ -35,3 +35,7 @@ playerPoints / playerMatches = playerPointsPerGame
   
 Scoring Percentage  
 playerGoals / playerShots * 100 = playerScoringPercentage  
+
+# Report Requirements
+## Report 
+Report details
