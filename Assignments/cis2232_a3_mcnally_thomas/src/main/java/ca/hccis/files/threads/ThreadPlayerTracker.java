@@ -52,7 +52,7 @@ public class ThreadPlayerTracker extends Thread {
 
             switch (menuOption) {
                 case "X":
-                    System.out.println(MESSAGE_EXIT);
+                    cisUtility.display(MESSAGE_EXIT);
                     break; //Break out of the loop as we're finished.
                 case "A":
                     processMenuOption1();
