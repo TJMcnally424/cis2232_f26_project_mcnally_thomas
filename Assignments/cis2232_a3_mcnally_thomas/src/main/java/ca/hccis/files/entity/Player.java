@@ -1,8 +1,7 @@
 package ca.hccis.files.entity;
 
 import ca.hccis.files.util.CisUtility;
-
-import java.util.Scanner;
+import ca.hccis.files.BO.PlayerBO;
 
 public class Player {
 
@@ -18,15 +17,11 @@ public class Player {
     private int playerLosses;
     private int playerShots;
     private int playerSaves;
-
-    //***************************************************************************
-    //Will use a CisUtility object that can be set to use either console or gui.
-    //Note if it is transient, it will not be encoded in the json strings.
-    //***************************************************************************
     private transient CisUtility cisUtility = new CisUtility();
     public Player(CisUtility cisUtility) {
         this.cisUtility = cisUtility;
     }
+
 
     public int getPlayerGoals() {
         return playerGoals;
@@ -158,19 +153,18 @@ public class Player {
 
     @Override
     public String toString() {
-        return "Player{" +
+        return "Player: " +
                 "id=" + id +
-                ", playerFirstName='" + playerFirstName + '\'' +
-                ", playerLastName='" + playerLastName + '\'' +
-                ", playerPosition='" + playerPosition + '\'' +
-                ", playerGoals=" + playerGoals +
-                ", playerAssists=" + playerAssists +
-                ", playerPenaltyMin=" + playerPenaltyMin +
-                ", playerMatches=" + playerMatches +
-                ", playerWins=" + playerWins +
-                ", playerLosses=" + playerLosses +
-                ", playerShots=" + playerShots +
-                ", playerSaves=" + playerSaves +
-                '}';
+                ", player FirstName='" + playerFirstName + '\'' +
+                ", player LastName='" + playerLastName + '\'' +
+                ", player Position='" + playerPosition + '\'' +
+                ", player Goals=" + playerGoals +
+                ", player Assists=" + playerAssists +
+                ", player PenaltyMin=" + playerPenaltyMin +
+                ", player Matches=" + playerMatches +
+                ", player Wins=" + playerWins +
+                ", player Losses=" + playerLosses +
+                ", player Shots=" + playerShots +
+                ", player Saves=" + playerSaves;
     }
 }

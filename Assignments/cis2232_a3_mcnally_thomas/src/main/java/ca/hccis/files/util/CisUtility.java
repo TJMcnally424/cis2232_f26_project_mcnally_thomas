@@ -42,7 +42,7 @@ public class CisUtility {
      * @return The String entered by the user
      * @since 20181121
      */
-    public String getInputString(String prompt) {
+    public  String getInputString(String prompt) {
 
         String userOption;
 
@@ -66,15 +66,7 @@ public class CisUtility {
      */
     public  int getInputInt(String prompt) {
         String enteredString = getInputString(prompt);
-        int entered;
-
-        if (isGUI) {
-            entered = Integer.parseInt(JOptionPane.showInputDialog(prompt));
-        } else {
-            System.out.println(prompt);
-            entered = input.nextInt();
-        }
-
+        int entered = Integer.parseInt(enteredString);
         return entered;
     }
 

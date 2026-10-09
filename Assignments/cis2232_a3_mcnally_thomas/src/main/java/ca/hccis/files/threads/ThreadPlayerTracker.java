@@ -4,6 +4,7 @@ package ca.hccis.files.threads;
 import ca.hccis.files.entity.Player;
 import ca.hccis.files.util.CisUtility;
 import com.google.gson.Gson;
+import ca.hccis.files.BO.PlayerBO;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -11,14 +12,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.DecimalFormat;
 import java.util.List;
 
-/**
- * Thread to run on console
- *
- * @author bjmac
- * @since 20250922
- */
 public class ThreadPlayerTracker extends Thread {
 
     public static Gson gson = new Gson();
@@ -33,7 +29,8 @@ public class ThreadPlayerTracker extends Thread {
 
     private CisUtility cisUtility = null;
 
-    public ThreadPlayerTracker() {}
+    public ThreadPlayerTracker() {
+    }
 
     public ThreadPlayerTracker(CisUtility cisUtility) {
         this.cisUtility = cisUtility;
@@ -76,8 +73,7 @@ public class ThreadPlayerTracker extends Thread {
      * @author Thomas McNally
      * @since 9/24/2026
      */
-    public static void processMenuOption1() {
-        System.out.println("Add new player: ");
+    public void processMenuOption1() {
         write();
     }
 
@@ -87,32 +83,43 @@ public class ThreadPlayerTracker extends Thread {
      * @author Thomas McNally
      * @since 9/24/2026
      */
-    public static void processMenuOption2() {
-        System.out.println("Viewing current players: ");
+    public void processMenuOption2() {
         read();
     }
 
-    public static void write() {
+    public void write() {
+        Player player = new Player(cisUtility);
         try {
             FileWriter writer = new FileWriter("c:/cis2232/data_mcnally_thomas.json", true);
-            Player player = new Player();
             player.getInformation();
             writer.append(gson.toJson(player));
             writer.append(System.lineSeparator());
             System.out.println("Successfully written JSON string to file.");
             writer.close();
-        } catch (IOException e) {}
+        } catch (IOException e) {
+        }
     }
 
-    public static void read() {
+    public void read() {
+        Gson gson = new Gson();
+
         try {
             FileReader reader = new FileReader("c:/cis2232/data_mcnally_thomas.json");
             List<String> lines = reader.readAllLines();
-            for(int i = 0; i < lines.size(); i++) {
-                Player playerFromJson = gson.fromJson(lines.get(i), Player.class);
-                IO.println(playerFromJson);
+            String output = "";
+            for (String current : lines) {
+                Player player = gson.fromJson(current, Player.class);
+                output += player.toString() + System.lineSeparator()
+                + "Player Stats:  Scoring percentage = " + PlayerBO.scoringPercentage(player)
+                        + ", Points per game = " + PlayerBO.pointsPerGame(player) +
+                        ", Total Points = " + PlayerBO.totalPoints(player) + System.lineSeparator()
+                        + System.lineSeparator();
+
             }
-        } catch (IOException e) {}
+
+            cisUtility.display(output);
+        } catch (IOException e) {
+        }
     }
 
     public static void initialize() {
@@ -123,7 +130,8 @@ public class ThreadPlayerTracker extends Thread {
             try {
                 Files.createDirectories(directory);
                 Files.createFile(path);
-            } catch (IOException e) {}
+            } catch (IOException e) {
+            }
         }
     }
 
