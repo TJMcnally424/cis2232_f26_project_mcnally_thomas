@@ -38,4 +38,4 @@ playerGoals / playerShots * 100 = playerScoringPercentage
 
 # Report Requirements
 ## Player Position Report 
-Enter a player last name and position the report will return any rows that have that name and position. The results will display scoring percentage and points per game, points per game descending. 
+Enter a player last name and position the report will return any rows that have that name and position. The results will display scoring percentage and points per game, ordered by points per game descending. 
