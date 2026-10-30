@@ -38,7 +38,7 @@ public class SkillsAssessmentSquashTechnical {
     @Column(name = "createdDateTime", nullable = false, length = 20)
     private String createdDateTime;
 
-    @Size(min=1, max = 50)//TODO replace this without the min.
+    @Size(min=1, max = 50)
     @NotNull
     @Column(name = "athleteName", nullable = false, length = 50)
     private String athleteName;

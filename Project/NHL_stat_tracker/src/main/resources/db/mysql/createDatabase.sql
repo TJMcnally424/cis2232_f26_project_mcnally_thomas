@@ -42,7 +42,9 @@ ALTER TABLE PlayerTrackerData
 INSERT INTO PlayerTrackerData (id, playerFirstName, playerLastName, playerPosition, playerGoals, playerAssists, playerPenaltyMin,playerMatches,playerWins,
                                playerLosses,playerShots,playerSaves,playerPoints,playerPointsPerGame,playerScoringPercentage)
 VALUES (1, 'Example', 'Player', 'Defence', 10, 10, 0,
-        10, 5, 5, 20, 0, 20, 2, 50);
+        10, 5, 5, 20, 0, 20, 2, 50),
+       (2, 'Example2', 'Player', 'Defence', 10, 10, 0,
+        10, 5, 5, 20, 0, 20, 4, 100);
 --
 
 CREATE TABLE CodeType (codeTypeId int(3) COMMENT 'This is the primary key for code types',

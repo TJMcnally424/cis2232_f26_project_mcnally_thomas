@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="42b9d7bc-3b0a-40fe-ac13-6e2b256c9b2b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Documentation/~$oject_Topic_Document.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/resources/db/mysql/createDatabase.sql" beforeDir="false" afterPath="$PROJECT_DIR$/main/resources/db/mysql/createDatabase.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/db/mysql/createDatabase1.sql" beforeDir="false" />
-    </list>
+    <list default="true" id="42b9d7bc-3b0a-40fe-ac13-6e2b256c9b2b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,8 +45,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-37e91769500f-intellij.indexing.shared.core-IU-261.27258.48" />
-        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-IU-261.27258.48" />
+        <option value="bundled-jdk-30f59d01ecdd-a203e0a19954-intellij.indexing.shared.core-IU-262.10968.63" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.10968.63" />
       </set>
     </attachedChunks>
   </component>
@@ -66,6 +58,7 @@
       <option name="presentableId" value="Default" />
       <updated>1790260842789</updated>
       <workItem from="1790260843801" duration="24000" />
+      <workItem from="1793278105049" duration="33000" />
     </task>
     <servers />
   </component>

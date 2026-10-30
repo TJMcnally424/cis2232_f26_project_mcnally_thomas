@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+    <title id="pageTitle">Report</title>
+</head>
+<body>
+<style scoped="scoped">input:not(.hidden) {
+    display: inline-block;
+    float: right
+}
+
+
+.cd {
+    color: #F00 !important;
+    font-weight: bold;
+    margin-bottom: -48px
+}
+
+label {
+    margin-right: 8px
+}</style>
+<nav th:replace="fragments/navHeader :: navbar"></nav>
+
+
+
+<div class="container has-text-centered">
+    <h2 class="title is-2" th:text="#{label.report.position}">_</h2>
+
+    <form th:action="@{/report/nhl/position/submit}" method="post" class="wbb"
+          style="display:inline-block;text-align:left!important">
+        <label for="lastName">Player Last Name: </label><br/>
+        <input id="lastName" type="text" th:field="${reportInput.lastName}"><br/>
+
+        <label for>Player Position: </label><br/>
+        <input type="text" th:field="${reportInput.position}"><br/>
+
+        <br/>
+        <button style="display:block;margin-top:24px!important" class="centered">Submit</button>
+    </form>
+
+    <p th:if="${not #strings.isEmpty(message)}" th:text="#{error.message.no.data.found.name}">not found</p>
+    <!--https://stackoverflow.com/a/33106495-->
+    <table class="wbb centered" th:if="${not #lists.isEmpty(reportInput.playerTrackerData)}">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Position</th>
+            <th>Points Per Game</th>
+            <th>Scoring Percentage</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item,iterStat : ${reportInput.playerTrackerData}">
+            <!--TODO: Report necessary fields -->
+            <td th:text="${item.id}"></td>
+            <td th:text="${item.playerFirstName}"></td>
+            <td th:text="${item.playerLastName}"></td>
+            <td th:text="${item.playerPosition}"></td>
+            <td th:text="${item.playerPointsPerGame}"></td>
+            <td th:text="${item.playerScoringPercentage}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<br></br>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

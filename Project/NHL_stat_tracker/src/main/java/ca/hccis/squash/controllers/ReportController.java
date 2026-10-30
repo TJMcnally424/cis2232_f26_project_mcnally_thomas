@@ -1,8 +1,11 @@
 package ca.hccis.squash.controllers;
 
 import ca.hccis.squash.bo.SkillsAssessmentSquashTechnicalBO;
+import ca.hccis.squash.dao.NHLPlayerDAO;
 import ca.hccis.squash.dao.SkillsAssessmentSquashTechnicalDAO;
+import ca.hccis.squash.entity.ReportNHL;
 import ca.hccis.squash.entity.ReportSquash;
+import ca.hccis.squash.jpa.entity.Playertrackerdata;
 import ca.hccis.squash.jpa.entity.SkillsAssessmentSquashTechnical;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -72,6 +75,20 @@ public class ReportController {
         model.addAttribute("reportInput",new ReportSquash());
         return "report/reportSquashScore";
     }
+    /**
+     * Method to send user to the score name report.
+     *
+     * @param model
+     * @return view for list
+     * @author Thomas McNally
+     * @since 2026-10-29
+     */
+    @RequestMapping("/NHL/Position")
+    public String reportPosition(Model model) {
+        logger.info("Running the reports controller player position method");
+        model.addAttribute("reportInput",new ReportNHL());
+        return "report/reportPosition";
+    }
 
 
     /**
@@ -136,6 +153,27 @@ public class ReportController {
         model.addAttribute("reportInput", reportSquash);
 
         return "report/reportSquashScore"; //Send user to another view.
+    }
+
+    @RequestMapping("/nhl/position/submit")
+    public String reportPositionSubmit(Model model, @ModelAttribute("reportInput") ReportNHL reportNHL) {
+        System.out.println("Player Name:"+reportNHL.getLastName());
+
+        //Write some model code to go to the db and get the appropriate assessments
+        //Add them to a collection in the ReportSquash class
+        NHLPlayerDAO playerDAO = new NHLPlayerDAO();
+        ArrayList<Playertrackerdata> theList = playerDAO.selectByNameAndPosition(reportNHL.getLastName(), reportNHL.getPosition());
+        reportNHL.setPlayerTrackerData(theList);
+
+        //Add a message in case the report does not contain any data
+        if (theList != null && theList.isEmpty()) {
+            model.addAttribute("message", "No assessments found for that name");
+        }
+
+        //Put object in model so it can be used on the view (html)
+        model.addAttribute("reportInput", reportNHL);
+
+        return "report/reportPosition"; //Send user to another view.
     }
 
 
