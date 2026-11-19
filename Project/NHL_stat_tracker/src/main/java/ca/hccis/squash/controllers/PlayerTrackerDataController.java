@@ -1,5 +1,6 @@
 package ca.hccis.squash.controllers;
 
+import ca.hccis.squash.bo.SkillsAssessmentSquashTechnicalValidationBO;
 import ca.hccis.squash.entity.PlayerTrackerDataDto;
 import ca.hccis.squash.jpa.entity.CodeValue;
 import ca.hccis.squash.jpa.entity.PlayerTrackerData;
@@ -13,6 +14,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +23,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -55,7 +59,6 @@ public class PlayerTrackerDataController {
         }
         session.setAttribute("skillTypes", skillTypes);
 
-        //TODO this stuff
         Iterable<PlayerTrackerData> assessments = _ptdcr.findAll();
         model.addAttribute("assessments", assessments);
         model.addAttribute("assessment", new PlayerTrackerData());
@@ -76,7 +79,6 @@ public class PlayerTrackerDataController {
             _ptdcr.deleteById(id);
             model.addAttribute("messageSuccess", "Assessment deleted");
         } catch (Exception e) {
-            //todo what if delete was not successful?
             model.addAttribute("messageError", "Exception deleting assessment");
         }
         Iterable<PlayerTrackerData> assessments = _ptdcr.findAll();
@@ -132,16 +134,12 @@ public class PlayerTrackerDataController {
      * @param model
      * @param request
      * @param playerTrackerData what is being added or modified
-     * @param bindingResult                   Result of SQL
      * @return add with errors or busPass
      * @author CIS2232
      * @since 20251201
      */
     @RequestMapping("/submit")
-    public String submit(Model model, HttpServletRequest request, @Valid @ModelAttribute("playerData") PlayerTrackerData playerTrackerData, BindingResult bindingResult) {
-        boolean valid = true;
-
-        //TODO Validation goes here
+    public String submit(Model model, HttpServletRequest request, @Valid @ModelAttribute("playerData") PlayerTrackerData playerTrackerData) {
 
         //Calculate stats before saving.
         playerTrackerData.setPlayerPoints(PlayerTrackerBO.totalPoints(playerTrackerData));
@@ -159,26 +157,26 @@ public class PlayerTrackerDataController {
      * @author BJM
      * @since 2025-12-01
      */
-//    @RequestMapping("/search")
-//    public String search(Model model, @ModelAttribute("assessment") PlayerTrackerData playerTrackerData) {
-//
-//        //**********************************************************************
-//        //Use repository method created to find any entities which contain
-//        //the name entered on the list page.
-//        //**********************************************************************
-//
-//        List<SkillsAssessmentSquashTechnical> assessmentsAthleteName = _sastr.findByAthleteNameContaining(playerTrackerData.getPlayerName());
-//        List<SkillsAssessmentSquashTechnical> assessmentsAssessorName = _sastr.findByAssessorNameContaining(skillsAssessmentSquashTechnical.getPlayerName());
-//
-//        //put in set to eliminate duplicates
-//        HashSet<SkillsAssessmentSquashTechnical> skillsAssessmentSquashTechnicalsSet = new HashSet<>();
-//        skillsAssessmentSquashTechnicalsSet.addAll(assessmentsAthleteName);
-//        skillsAssessmentSquashTechnicalsSet.addAll(assessmentsAssessorName);
-//
-//        model.addAttribute("assessments", skillsAssessmentSquashTechnicalsSet);
-//        logger.debug("searched for name:" + skillsAssessmentSquashTechnical.getAthleteName());
-//        return "skillsassessmentsquashtechnical/list";
-//    }
+    @RequestMapping("/search")
+    public String search(Model model, @ModelAttribute("assessment") PlayerTrackerData playerTrackerData) {
+
+        //**********************************************************************
+        //Use repository method created to find any entities which contain
+        //the name entered on the list page.
+        //**********************************************************************
+
+        List<PlayerTrackerData> firstName = _ptdcr.findByPlayerFirstNameContaining(playerTrackerData.getPlayerFirstName());
+        List<PlayerTrackerData> lastName = _ptdcr.findByPlayerLastNameContaining(playerTrackerData.getPlayerFirstName());
+
+        //put in set to eliminate duplicates
+        HashSet<PlayerTrackerData> playerTrackerDataSet = new HashSet<>();
+        playerTrackerDataSet.addAll(firstName);
+        playerTrackerDataSet.addAll(lastName);
+
+        model.addAttribute("assessments", playerTrackerDataSet);
+        //logger.debug("searched for name:" + playerTrackerData.getPlayerFirstName());
+        return "playertrackerdata/list";
+    }
 
     @RequestMapping("/list/edit")
     public String showCreateForm(Model model) {
@@ -208,6 +206,11 @@ public class PlayerTrackerDataController {
         ArrayList<PlayerTrackerData> tempList = new ArrayList<>();
         for (PlayerTrackerData current : assessments) {
             tempList.add(current);
+            //Calculate and save new values
+            current.setPlayerPoints(PlayerTrackerBO.totalPoints(current));
+            current.setPlayerPointsPerGame(PlayerTrackerBO.pointsPerGame(current));
+            current.setPlayerScoringPercentage(PlayerTrackerBO.scoringPercentage(current));
+            _ptdcr.save(current);
         }
         playerTrackerDataForm.setAssessments(tempList);
         model.addAttribute("form", playerTrackerDataForm);

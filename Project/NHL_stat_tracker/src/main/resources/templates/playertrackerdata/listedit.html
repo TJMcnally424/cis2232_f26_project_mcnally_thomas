@@ -58,12 +58,12 @@
                         <td><input th:field="*{assessments[__${itemStat.index}__].playerAssists}" size="5"></td>
                         <td><input th:field="*{assessments[__${itemStat.index}__].playerShots}" size="5"></td>
                         <td><input th:field="*{assessments[__${itemStat.index}__].playerSaves}" size="5"></td>
-                        <td><input th:field="*{assessments[__${itemStat.index}__].playerPoints}" size="5"></td>
+                        <td><input th:field="*{assessments[__${itemStat.index}__].playerPoints}" size="5" readonly="readonly"></td>
                         <td><input th:field="*{assessments[__${itemStat.index}__].playerWins}" size="5"></td>
                         <td><input th:field="*{assessments[__${itemStat.index}__].playerLosses}" size="5"></td>
-                        <td><input th:field="*{assessments[__${itemStat.index}__].playerMatches}" size="5"></td>
-                        <td><input th:field="*{assessments[__${itemStat.index}__].playerPointsPerGame}" size="5"></td>
-                        <td><input th:field="*{assessments[__${itemStat.index}__].playerScoringPercentage}" size="10"></td>
+                        <td><input th:field="*{assessments[__${itemStat.index}__].playerMatches}" size="5" ></td>
+                        <td><input th:field="*{assessments[__${itemStat.index}__].playerPointsPerGame}" size="5" readonly="readonly"></td>
+                        <td><input th:field="*{assessments[__${itemStat.index}__].playerScoringPercentage}" size="10" readonly="readonly"></td>
                     </tr>
 
                     <!-- Message when no data -->

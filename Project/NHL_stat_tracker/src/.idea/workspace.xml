@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="42b9d7bc-3b0a-40fe-ac13-6e2b256c9b2b" name="Changes" comment="" />
+    <list default="true" id="42b9d7bc-3b0a-40fe-ac13-6e2b256c9b2b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/ca/hccis/squash/controllers/PlayerTrackerDataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/ca/hccis/squash/controllers/PlayerTrackerDataController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/resources/templates/playertrackerdata/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/resources/templates/playertrackerdata/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/resources/templates/playertrackerdata/listedit.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/resources/templates/playertrackerdata/listedit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/ca/hccis/squash/controllers/PlayerTrackerDataController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../target/classes/ca/hccis/squash/controllers/PlayerTrackerDataController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/templates/playertrackerdata/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/../target/classes/templates/playertrackerdata/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/templates/playertrackerdata/listedit.html" beforeDir="false" afterPath="$PROJECT_DIR$/../target/classes/templates/playertrackerdata/listedit.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,6 +48,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/HollandCollege/Y2S3/CIS 2232/Project/cis2232_f26_project_mcnally_thomas/Project/NHL_stat_tracker/src&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -59,6 +69,7 @@
       <updated>1790260842789</updated>
       <workItem from="1790260843801" duration="24000" />
       <workItem from="1793278105049" duration="33000" />
+      <workItem from="1795095629418" duration="5000" />
     </task>
     <servers />
   </component>
