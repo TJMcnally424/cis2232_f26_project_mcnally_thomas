@@ -27,9 +27,6 @@ public class PlayerTrackerBO {
     public static double scoringPercentage(PlayerTrackerData player) {
         //Calculates player scoring percentage
         double goals = (player.getPlayerGoals());
-        if (goals > player.getPlayerShots()) {
-            return 0;
-        }
         return (goals / player.getPlayerShots()) * 100;
     }
 
