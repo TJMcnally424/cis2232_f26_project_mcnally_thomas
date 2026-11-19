@@ -5,7 +5,7 @@ import ca.hccis.squash.dao.NHLPlayerDAO;
 import ca.hccis.squash.dao.SkillsAssessmentSquashTechnicalDAO;
 import ca.hccis.squash.entity.ReportNHL;
 import ca.hccis.squash.entity.ReportSquash;
-import ca.hccis.squash.jpa.entity.Playertrackerdata;
+import ca.hccis.squash.jpa.entity.PlayerTrackerData;
 import ca.hccis.squash.jpa.entity.SkillsAssessmentSquashTechnical;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -162,7 +162,7 @@ public class ReportController {
         //Write some model code to go to the db and get the appropriate assessments
         //Add them to a collection in the ReportSquash class
         NHLPlayerDAO playerDAO = new NHLPlayerDAO();
-        ArrayList<Playertrackerdata> theList = playerDAO.selectByNameAndPosition(reportNHL.getLastName(), reportNHL.getPosition());
+        ArrayList<PlayerTrackerData> theList = playerDAO.selectByNameAndPosition(reportNHL.getLastName(), reportNHL.getPosition());
         reportNHL.setPlayerTrackerData(theList);
 
         //Add a message in case the report does not contain any data

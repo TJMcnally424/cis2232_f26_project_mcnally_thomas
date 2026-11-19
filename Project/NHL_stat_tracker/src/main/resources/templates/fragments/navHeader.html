@@ -19,15 +19,17 @@
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-end">
             <div class="navbar-item has-dropdown is-hoverable">
-                <a th:href="@{/skillsassessmentsquashtechnical}" href="/skillsassessmentsquashtechnical/" class="accent navbar-link">Assessments</a>
+                <a th:href="@{/playertrackerdata}" href="/playertrackerdata/" class="accent navbar-link">Players</a>
                 <div class="accent-background navbar-dropdown">
-                    <a th:href="@{/skillsassessmentsquashtechnical}" class="accent navbar-item">View</a>
-                    <a th:href="@{/skillsassessmentsquashtechnical/list/edit}" class="accent navbar-item">List Edit</a>
+                    <!--TODO Make these work -->
+                    <a th:href="@{/playertrackerdata}" class="accent navbar-item">View</a>
+                    <a th:href="@{/playertrackerdata/list/edit}" class="accent navbar-item">Edit</a>
+                    <a th:href="@{/playertrackerdata/add}" class="accent navbar-item">Add</a>
                 </div>
             </div>
             <div class="navbar-end">
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a th:href="@{/report}" href="/about" class="accent navbar-link">Reports</a>
+                    <a class="accent navbar-link">Reports</a>
                     <div class="accent-background navbar-dropdown">
                         <a th:href="@{/report/NHL/Position}" class="accent navbar-item"
                            th:text="#{label.report.position}">Player position report-placeholder</a>

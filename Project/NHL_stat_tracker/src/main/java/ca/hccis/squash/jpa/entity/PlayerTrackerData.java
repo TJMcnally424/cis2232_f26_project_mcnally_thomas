@@ -3,10 +3,11 @@ package ca.hccis.squash.jpa.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import org.hibernate.annotations.ColumnDefault;
 
 @Entity
 @Table(name = "playertrackerdata", schema = "cis2232_nhl_tracker")
-public class Playertrackerdata {
+public class PlayerTrackerData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -54,11 +55,13 @@ public class Playertrackerdata {
     @Column(name = "playerPoints")
     private Integer playerPoints;
 
+    @ColumnDefault("5")
     @Column(name = "playerPointsPerGame")
-    private Integer playerPointsPerGame;
+    private Double playerPointsPerGame;
 
+    @ColumnDefault("5")
     @Column(name = "playerScoringPercentage")
-    private Integer playerScoringPercentage;
+    private Double playerScoringPercentage;
 
     public Integer getId() {
         return id;
@@ -164,19 +167,19 @@ public class Playertrackerdata {
         this.playerPoints = playerPoints;
     }
 
-    public Integer getPlayerPointsPerGame() {
+    public Double getPlayerPointsPerGame() {
         return playerPointsPerGame;
     }
 
-    public void setPlayerPointsPerGame(Integer playerPointsPerGame) {
+    public void setPlayerPointsPerGame(Double playerPointsPerGame) {
         this.playerPointsPerGame = playerPointsPerGame;
     }
 
-    public Integer getPlayerScoringPercentage() {
+    public Double getPlayerScoringPercentage() {
         return playerScoringPercentage;
     }
 
-    public void setPlayerScoringPercentage(Integer playerScoringPercentage) {
+    public void setPlayerScoringPercentage(Double playerScoringPercentage) {
         this.playerScoringPercentage = playerScoringPercentage;
     }
 

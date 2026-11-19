@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/head :: head">
+        <title id="pageTitle"  th:text="#{label.add.edit}">Label Add/Edit</title>
+    </head>
+    <body>
+        <nav th:replace="fragments/navHeader :: navbar"></nav>
+        <div class="container has-text-centered">
+            <h2 class="title is-2" th:if= "${skillsAssessment.id != null}" th:text="#{label.edit.order}">label Edit</h2>
+            <h2 class="title is-2" th:if= "${skillsAssessment.id == null}" th:text="#{label.add.order}">label Add</h2>
+
+
+            <form th:action="@{/playertrackerdata/submit}" method="post" class="wbb" style="display:inline-block;text-align:left!important">
+
+                <!-- Hidden ID field -->
+                <input type="hidden" th:field="${skillsAssessment.id}" />
+
+                <p>
+                    <label>Player First Name:</label>
+                    <input type="text" th:field="${skillsAssessment.playerFirstName}" />
+                </p>
+                <p class="cd" th:if="${#fields.hasErrors('${skillsAssessment.playerFirstName}')}" th:errors="${skillsAssessment.playerFirstName}"></p>
+
+                <p>
+                    <label>Player First Name:</label>
+                    <input type="text" th:field="${skillsAssessment.playerLastName}" />
+                </p>
+                <p class="cd" th:if="${#fields.hasErrors('${skillsAssessment.playerLastName}')}" th:errors="${skillsAssessment.playerLastName}"></p>
+
+                <p>
+                    <label>Player Position:</label>
+                    <input type="text" th:field="${skillsAssessment.playerPosition}" />
+                </p>
+                <p class="cd" th:if="${#fields.hasErrors('${skillsAssessment.playerPosition}')}" th:errors="${skillsAssessment.playerPosition}"></p>
+
+                <p>
+                    <label>Player Goals:</label>
+                    <input type="number" th:field="${skillsAssessment.playerGoals}" />
+                </p>
+                <p class="cd" th:if="${#fields.hasErrors('${skillsAssessment.playerGoals}')}" th:errors="${skillsAssessment.playerGoals}"></p>
+
+                <p>
+                    <label>Player Shots:</label>
+                    <input type="number" th:field="${skillsAssessment.playerShots}" />
+                </p>
+                <p class="cd" th:if="${#fields.hasErrors('${skillsAssessment.playerShots}')}" th:errors="${skillsAssessment.playerShots}"></p>
+
+                <p>
+                    <label>Player Assists:</label>
+                    <input type="number" th:field="${skillsAssessment.playerAssists}" />
+                </p>
+                <p class="cd" th:if="${#fields.hasErrors('${skillsAssessment.playerAssists}')}" th:errors="${skillsAssessment.playerAssists}"></p>
+
+                <p>
+                    <label>Player Saves:</label>
+                    <input type="number" th:field="${skillsAssessment.playerSaves}" />
+                </p>
+                <p class="cd" th:if="${#fields.hasErrors('${skillsAssessment.playerSaves}')}" th:errors="${skillsAssessment.playerSaves}"></p>
+
+                <p>
+                    <label>Player Penalty mins:</label>
+                    <input type="number" step="any" th:field="${skillsAssessment.playerPenaltyMin}" />
+                </p>
+                <p class="cd" th:if="${#fields.hasErrors('${skillsAssessment.playerPenaltyMin}')}" th:errors="${skillsAssessment.playerPenaltyMin}"></p>
+
+                <p>
+                    <label>Player wins:</label>
+                    <input type="number" th:field="${skillsAssessment.playerWins}" />
+                </p>
+                <p class="cd" th:if="${#fields.hasErrors('${skillsAssessment.playerWins}')}" th:errors="${skillsAssessment.playerWins}"></p>
+
+                <p>
+                    <label>Player Losses:</label>
+                    <input type="number" th:field="${skillsAssessment.playerLosses}" />
+                </p>
+                <p class="cd" th:if="${#fields.hasErrors('${skillsAssessment.playerLosses}')}" th:errors="${skillsAssessment.playerLosses}"></p>
+
+                <p>
+                    <label>Player Games played:</label>
+                    <input type="number" th:field="${skillsAssessment.playerMatches}" />
+                </p>
+                <p class="cd" th:if="${#fields.hasErrors('${skillsAssessment.playerMatches}')}" th:errors="${skillsAssessment.playerMatches}"></p>
+
+                <p>
+                    <label>Total Points:</label>
+                    <input type="number" th:field="${skillsAssessment.playerPoints}" readonly="readonly" />
+                </p>
+                <p class="cd" th:if="${#fields.hasErrors('${skillsAssessment.playerPoints}')}" th:errors="${skillsAssessment.playerPoints}"></p>
+
+                <p>
+                    <label>Points per Game:</label>
+                    <input type="number" th:field="${skillsAssessment.playerPointsPerGame}" readonly="readonly" />
+                </p>
+                <p class="cd" th:if="${#fields.hasErrors('${skillsAssessment.playerPointsPerGame}')}" th:errors="${skillsAssessment.playerPointsPerGame}"></p>
+
+                <p>
+                    <label>Scoring Percentage:</label>
+                    <input type="number" th:field="${skillsAssessment.playerScoringPercentage}" readonly="readonly" />
+                </p>
+                <p class="cd" th:if="${#fields.hasErrors('${skillsAssessment.playerScoringPercentage}')}" th:errors="${skillsAssessment.playerScoringPercentage}"></p>
+
+                <!-- Submit button -->
+                <button style="display:block;margin-top:24px!important" class="centered" th:text="#{label.submit}">Submit</button>
+            </form>
+
+        </div>
+        <footer th:replace="fragments/footer :: footer"></footer>
+    </body>
+</html>

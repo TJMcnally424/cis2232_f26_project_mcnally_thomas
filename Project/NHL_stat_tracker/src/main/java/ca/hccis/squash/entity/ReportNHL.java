@@ -1,6 +1,6 @@
 package ca.hccis.squash.entity;
 
-import ca.hccis.squash.jpa.entity.Playertrackerdata;
+import ca.hccis.squash.jpa.entity.PlayerTrackerData;
 
 import java.util.ArrayList;
 
@@ -21,7 +21,7 @@ public class ReportNHL {
     }
 
     private String position;
-    private ArrayList<Playertrackerdata> playerTrackerData;
+    private ArrayList<PlayerTrackerData> playerTrackerData;
 
     public String getLastName() {
         return lastName;
@@ -31,11 +31,11 @@ public class ReportNHL {
         this.lastName = lastName;
     }
 
-    public ArrayList<Playertrackerdata> getPlayerTrackerData() {
+    public ArrayList<PlayerTrackerData> getPlayerTrackerData() {
         return playerTrackerData;
     }
 
-    public void setPlayerTrackerData(ArrayList<Playertrackerdata> playerTrackerData) {
+    public void setPlayerTrackerData(ArrayList<PlayerTrackerData> playerTrackerData) {
         this.playerTrackerData = playerTrackerData;
     }
 }

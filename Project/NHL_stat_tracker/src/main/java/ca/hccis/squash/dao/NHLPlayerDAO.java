@@ -1,6 +1,6 @@
 package ca.hccis.squash.dao;
 
-import ca.hccis.squash.jpa.entity.Playertrackerdata;
+import ca.hccis.squash.jpa.entity.PlayerTrackerData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -42,8 +42,8 @@ public class NHLPlayerDAO {
      * @since 20210924
      * @author BJM
      */
-    public ArrayList<Playertrackerdata> selectAll() {
-        ArrayList<Playertrackerdata> assessments = null;
+    public ArrayList<PlayerTrackerData> selectAll() {
+        ArrayList<PlayerTrackerData> assessments = null;
         Statement stmt = null;
 
         //******************************************************************
@@ -67,7 +67,7 @@ public class NHLPlayerDAO {
 
             while (rs.next()) {
 
-                Playertrackerdata player = new Playertrackerdata();
+                PlayerTrackerData player = new PlayerTrackerData();
                 player.setId(rs.getInt("id"));
                 player.setPlayerFirstName(rs.getString("playerFirstName"));
                 player.setPlayerLastName(rs.getString("playerLastName"));
@@ -78,11 +78,11 @@ public class NHLPlayerDAO {
                 player.setPlayerGoals(rs.getInt("playerGoals"));
                 player.setPlayerAssists(rs.getInt("playerAssists"));
                 player.setPlayerPoints(rs.getInt("playerPoints"));
-                player.setPlayerScoringPercentage(rs.getInt("playerScoringPercentage"));
+                player.setPlayerScoringPercentage(rs.getDouble("playerScoringPercentage"));
                 player.setPlayerPenaltyMin(rs.getFloat(("playerPenaltyMin")));
                 player.setPlayerSaves(rs.getInt("playerSaves"));
                 player.setPlayerPosition(rs.getString("playerPosition"));
-                player.setPlayerPointsPerGame(rs.getInt("playerPointsPerGame"));
+                player.setPlayerPointsPerGame(rs.getDouble("playerPointsPerGame"));
 
                 assessments.add(player);
             }
@@ -108,8 +108,8 @@ public class NHLPlayerDAO {
      * @since 20251009
      * @author BJM
      */
-    public ArrayList<Playertrackerdata> selectByNameAndPosition(String lastName, String position) {
-        ArrayList<Playertrackerdata> assessments = null;
+    public ArrayList<PlayerTrackerData> selectByNameAndPosition(String lastName, String position) {
+        ArrayList<PlayerTrackerData> assessments = null;
         Statement stmt = null;
 
         //******************************************************************
@@ -150,12 +150,12 @@ public class NHLPlayerDAO {
     }
 
 
-    public ArrayList<Playertrackerdata> loadList(ResultSet rs) throws SQLException {
-        ArrayList<Playertrackerdata> assessments = new  ArrayList();
+    public ArrayList<PlayerTrackerData> loadList(ResultSet rs) throws SQLException {
+        ArrayList<PlayerTrackerData> assessments = new  ArrayList();
 
         while (rs.next()) {
 
-            Playertrackerdata player = new Playertrackerdata();
+            PlayerTrackerData player = new PlayerTrackerData();
             player.setId(rs.getInt("id"));
             player.setPlayerFirstName(rs.getString("playerFirstName"));
             player.setPlayerLastName(rs.getString("playerLastName"));
@@ -166,11 +166,11 @@ public class NHLPlayerDAO {
             player.setPlayerGoals(rs.getInt("playerGoals"));
             player.setPlayerAssists(rs.getInt("playerAssists"));
             player.setPlayerPoints(rs.getInt("playerPoints"));
-            player.setPlayerScoringPercentage(rs.getInt("playerScoringPercentage"));
+            player.setPlayerScoringPercentage(rs.getDouble("playerScoringPercentage"));
             player.setPlayerPenaltyMin(rs.getFloat(("playerPenaltyMin")));
             player.setPlayerSaves(rs.getInt("playerSaves"));
             player.setPlayerPosition(rs.getString("playerPosition"));
-            player.setPlayerPointsPerGame(rs.getInt("playerPointsPerGame"));
+            player.setPlayerPointsPerGame(rs.getDouble("playerPointsPerGame"));
 
             assessments.add(player);
         }

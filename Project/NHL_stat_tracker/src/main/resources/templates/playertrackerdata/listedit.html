@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<!--Thanks to Ferhad, Francisco, and Carter from grad 2022 for the styling on this page.-->
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+    <title id="pageTitle" th:text="${session.title}">Topic List</title>
+</head>
+<body>
+<nav th:replace="fragments/navHeader :: navbar"></nav>
+<div class="container my-4">
+    <h2 class="mb-3 text-center title">Skills Assessment List for Edit</h2>
+    <h2 class="mb-3 text-center error" th:if="${not #strings.isEmpty(messageError)}" th:text="${messageError}">Message
+        from controller</h2>
+    <h2 class="mb-3 text-center success" th:if="${not #strings.isEmpty(messageSuccess)}" th:text="${messageSuccess}">
+        Message success from controller</h2>
+
+    <div class="table-responsive">
+        <form action="#" th:action="@{/playertrackerdata/list/edit/submit}" th:object="${form}"
+              method="post">
+            <fieldset>
+                <input type="submit" id="submitButton" th:value="Save">
+                <input type="reset" id="resetButton" name="reset" th:value="Reset"/>
+                <table class="table table-striped table-hover align-middle">
+                    <thead class="table-dark text-center">
+                    <tr>
+                        <th>ID</th>
+                        <th>Player first Name</th>
+                        <th>Player Last Name</th>
+                        <th>Player Position</th>
+                        <th>Penalty mins</th>
+                        <th>Goals</th>
+                        <th>Assists</th>
+                        <th>Shots</th>
+                        <th>Saves</th>
+                        <th>Points</th>
+                        <th>Wins</th>
+                        <th>Losses</th>
+                        <th>Total matches</th>
+                        <th>Points per game</th>
+                        <th>Scoring percentage</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+
+<!--                    <tr th:each="book, itemStat : *{books}">-->
+<!--                        <td><input th:field="*{books[__${itemStat.index}__].title}" /></td>-->
+<!--                        <td><input th:field="*{books[__${itemStat.index}__].author}" /></td>-->
+
+                    <tr th:each="current,itemStat : ${form.assessments}">
+                        <td><input th:field="*{assessments[__${itemStat.index}__].id}" size="5"/></td>
+                        <td><input th:field="*{assessments[__${itemStat.index}__].playerFirstName}" size="12"></td>
+                        <td><input th:field="*{assessments[__${itemStat.index}__].playerLastName}" size="12"></td>
+                        <td><input th:field="*{assessments[__${itemStat.index}__].playerPosition}" size="12"></td>
+                        <td><input th:field="*{assessments[__${itemStat.index}__].playerPenaltyMin}" size="5"></td>
+                        <td><input th:field="*{assessments[__${itemStat.index}__].playerGoals}" size="5"></td>
+                        <td><input th:field="*{assessments[__${itemStat.index}__].playerAssists}" size="5"></td>
+                        <td><input th:field="*{assessments[__${itemStat.index}__].playerShots}" size="5"></td>
+                        <td><input th:field="*{assessments[__${itemStat.index}__].playerSaves}" size="5"></td>
+                        <td><input th:field="*{assessments[__${itemStat.index}__].playerPoints}" size="5"></td>
+                        <td><input th:field="*{assessments[__${itemStat.index}__].playerWins}" size="5"></td>
+                        <td><input th:field="*{assessments[__${itemStat.index}__].playerLosses}" size="5"></td>
+                        <td><input th:field="*{assessments[__${itemStat.index}__].playerMatches}" size="5"></td>
+                        <td><input th:field="*{assessments[__${itemStat.index}__].playerPointsPerGame}" size="5"></td>
+                        <td><input th:field="*{assessments[__${itemStat.index}__].playerScoringPercentage}" size="10"></td>
+                    </tr>
+
+                    <!-- Message when no data -->
+                    <tr th:if="${#lists.isEmpty(form.assessments)}">
+                        <td colspan="13" class="text-center text-muted py-4">
+                            No assessments found.
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+        </form>
+    </div>
+
+
+</div>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

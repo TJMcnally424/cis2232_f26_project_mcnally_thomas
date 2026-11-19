@@ -28,8 +28,8 @@ CREATE TABLE PlayerTrackerData
     playerShots       int(5) COMMENT 'Number of shots on the net player has',
     playerSaves       int(5) COMMENT 'Number of saves if they are a goalie',
     playerPoints      int(5) COMMENT 'Number of points earned by player',
-    playerPointsPerGame        int(5) COMMENT 'Score calculated at submission',
-    playerScoringPercentage    int(5) COMMENT 'Score calculated at submission'
+    playerPointsPerGame        double default (5) COMMENT 'Score calculated at submission',
+    playerScoringPercentage    double default (5) COMMENT 'Score calculated at submission'
 ) COMMENT 'This table holds assessment details';
 
 ALTER TABLE PlayerTrackerData
