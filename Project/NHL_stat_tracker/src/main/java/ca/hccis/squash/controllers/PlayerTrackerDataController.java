@@ -1,5 +1,6 @@
 package ca.hccis.squash.controllers;
 
+import ca.hccis.squash.bo.PlayerTrackerValidationBO;
 import ca.hccis.squash.bo.SkillsAssessmentSquashTechnicalValidationBO;
 import ca.hccis.squash.entity.PlayerTrackerDataDto;
 import ca.hccis.squash.jpa.entity.CodeValue;
@@ -139,7 +140,25 @@ public class PlayerTrackerDataController {
      * @since 20251201
      */
     @RequestMapping("/submit")
-    public String submit(Model model, HttpServletRequest request, @Valid @ModelAttribute("playerData") PlayerTrackerData playerTrackerData) {
+    public String submit(Model model, HttpServletRequest request, @Valid @ModelAttribute("playerData") PlayerTrackerData playerTrackerData, BindingResult bindingResult) {
+        boolean valid = true;
+
+        ArrayList<String> validationErrors = PlayerTrackerValidationBO.validateInput(playerTrackerData);
+        if (validationErrors.size() > 0) {
+            valid = false;
+        }
+
+        if (!valid || bindingResult.hasErrors()) {
+            System.out.println("--------------------------------------------");
+            System.out.println("Validation error");
+            for (ObjectError error : bindingResult.getAllErrors()) {
+                System.out.println(error.getObjectName() + "-" + error.toString() + "-" + error.getDefaultMessage());
+            }
+            System.out.println("--------------------------------------------");
+            model.addAttribute("playerData", playerTrackerData);
+            model.addAttribute("ValidationErrors", validationErrors);
+            return "playertrackerdata/add";
+        }
 
         //Calculate stats before saving.
         playerTrackerData.setPlayerPoints(PlayerTrackerBO.totalPoints(playerTrackerData));
